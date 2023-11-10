@@ -4,3 +4,4 @@ export class Util {
       return Math.round(base + Math.random() * (limite - base))
     }
   }
+  

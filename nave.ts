@@ -1,4 +1,4 @@
-import { Arma } from "./Arma";
+import { Arma } from "./arma";
 import { Reator } from "./reator";
 import { Escudo } from "./escudo";
 import { Carga } from "./carga";
