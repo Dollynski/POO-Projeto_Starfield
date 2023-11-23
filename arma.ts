@@ -1,4 +1,4 @@
-import { Categoria } from "./categoria";
+
 
 export class Arma {
 constructor(
@@ -7,8 +7,6 @@ constructor(
     private _dano: number,
     private _alcance: number,
     private _cadencia: number,
-    private _preco: number,
-    private _categoria: Categoria
     ) {}
 
     public get nome (): string {
@@ -29,14 +27,6 @@ constructor(
 
     public get cadencia (): number {
         return this._cadencia;
-    }
-
-    public get preco (): number {
-        return this._preco;
-    }
-
-    public get categoria (): Categoria {
-        return this._categoria;
     }
 
 }
