@@ -1,4 +1,5 @@
 export class Escudo {
+  nome: any;
   constructor(
     private _potencia: number,
     private _regeneracao: number

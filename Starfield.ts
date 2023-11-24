@@ -2,7 +2,6 @@ import { Nave } from "./nave";
 import { Arma } from './arma';
 import Prompt from 'prompt-sync';
 import { Escudo } from "./escudo";
-import { naveplayer } from "./naveplayer";
 
 const teclado = Prompt();
 
@@ -72,7 +71,7 @@ const escudoC: Escudo = new Escudo(
   25
 );
 
-const nave: naveplayer = new Nave(
+const nave: Nave = new Nave(
   "",
   infiltrator_sc,
   100,
@@ -99,103 +98,112 @@ while (continua) {
       console.table(nave)
       break;
     case 1:
-      
-    let opcaoNave: number;
-    do {
+      const nomeNave: string = teclado('Digite o nome da nave: ');
+      nave.setNome(nomeNave);
+      console.log(`Nome: ${nave.nome}`);
 
-      console.log('| ========= CONSTRUA SUA NAVE ========= |');
-      console.log('|        1. Nomeie a sua nave           |');
-      console.log('|        2. Escolha a sua arma          |');
-      console.log('|        3. Escolha um escudo           |');
-      console.log('|        4.       Voltar                |');
-      console.log('| ===================================== |');
-      
-        opcaoNave = +teclado('Digite a opção desejada: ');
+      //------------------------------------------------------
+      console.log('-'.repeat(30));
+      console.log('Escolha a sua arma');
+      console.log('1. Dragon 221 MW Laser');
+      console.log('2. RezaTHz');
+      console.log('3. KE-20 Cannon');
+      console.log('4. Jishaku FE Railgun');
+      console.log('5. Vanguard Tempest CE-13');
+      console.log('6. Infiltrator SC-02');
+      console.log('7. Voltar');
 
-        switch (opcaoNave) {
-          case 1:
-            const nomeNave: string = teclado('Digite o nome da nave: ');
-            nave.setNome(nomeNave);
-            console.log(`Nome: ${nave.nome}`);
-            break;
+      const opcaoArma: number = parseInt(teclado('Digite a opção desejada: '));
 
-          case 2:
-            console.log('Escolha a sua arma');
-            console.log('1. Dragon 221 MW Laser');
-            console.log('2. RezaTHz');
-            console.log('3. KE-20 Cannon');
-            console.log('4. Jishaku FE Railgun');
-            console.log('5. Vanguard Tempest CE-13');
-            console.log('6. Infiltrator SC-02');
-            console.log('7. Voltar');
+      switch (opcaoArma) {
+        case 1:
+          const nomeArma: Arma = dragonMW;
+          nave.setArma(nomeArma);
+          console.log(`Arma escolhida: ${nave.arma.nome}`);
 
-            const opcaoArma: number = parseInt(teclado('Digite a opção desejada: '));
+          break;
+        case 2:
+          const nomeArma2: Arma = rezaTHz;
+          nave.setArma(nomeArma2);
+          console.log(`Arma escolhida: ${nave.arma.nome}`);
 
-            switch (opcaoArma) {
-              case 1:
-                const nomeArma: Arma = dragonMW;
-                nave.setArma(nomeArma);
-                console.log(`Arma escolhida: ${nave.arma.nome}`);
-                
-                break;
-              case 2:
-                const nomeArma2: Arma = rezaTHz;
-                nave.setArma(nomeArma2);
-                console.log(`Arma escolhida: ${nave.arma.nome}`);
-                
-                break;
-              case 3:
-                const nomeArma3: Arma = ke20Cannon;
-                nave.setArma(nomeArma3);
-                console.log(`Arma escolhida: ${nave.arma.nome}`);
-                
-                break;
-              case 4: 
-                const nomeArma4: Arma = jishaku_fe_railgun;
-                nave.setArma(nomeArma4);
-                console.log(`Arma escolhida: ${nave.arma.nome}`);
-                
-                break;
-              case 5:
-                const nomeArma5: Arma = vanguard_tempest;
-                nave.setArma(nomeArma5);
-                console.log(`Arma escolhida: ${nave.arma.nome}`);
-             
-                break;
-              case 6:
-                const nomeArma6: Arma = infiltrator_sc;
-                nave.setArma(nomeArma6);
-                console.log(`Arma escolhida: ${nave.arma.nome}`);
+          break;
+        case 3:
+          const nomeArma3: Arma = ke20Cannon;
+          nave.setArma(nomeArma3);
+          console.log(`Arma escolhida: ${nave.arma.nome}`);
 
-                break;
-              case 7:
-                console.log('Voltando');
-                break;
-              default:
-                console.log('Opção inválida. Tente novamente.');
-                break;
-            }
-            break;
+          break;
+        case 4:
+          const nomeArma4: Arma = jishaku_fe_railgun;
+          nave.setArma(nomeArma4);
+          console.log(`Arma escolhida: ${nave.arma.nome}`);
 
-          case 3:
-            console.log('Escolha um escudo');
+          break;
+        case 5:
+          const nomeArma5: Arma = vanguard_tempest;
+          nave.setArma(nomeArma5);
+          console.log(`Arma escolhida: ${nave.arma.nome}`);
 
-            break;
-          case 4:
-            console.log('Voltando ao menu principal');
-            break;
-          default:
-            console.log('Opção inválida. Tente novamente.');
-            break;
-        }
-      } while (opcaoNave !== 4);
+          break;
+        case 6:
+          const nomeArma6: Arma = infiltrator_sc;
+          nave.setArma(nomeArma6);
+          console.log(`Arma escolhida: ${nave.arma.nome}`);
 
+          break;
+        case 7:
+          console.log('Voltando');
+          break;
+        default:
+          console.log('Opção inválida. Tente novamente.');
+          break;
+      }
+            //------------------------------------------------------
+      console.log('-'.repeat(30));
+      console.log('Escolha um escudo');
+      console.log('1. Escudo A');
+      console.log('2. Escudo B');
+      console.log('3. Escudo C');
+
+      const opcaoEscudo: number = parseInt(teclado('Digite a opção desejada: '));
+
+      switch (opcaoEscudo) {
+        case 1: 
+          const nomeEscudo: Escudo = escudoA;
+          nave.setEscudo(nomeEscudo);
+          console.log(`Escudo escolhido: ${nave.escudo.nome}`);
+          break;
+
+        case 2:
+          const nomeEscudo2: Escudo = escudoB;
+          nave.setEscudo(nomeEscudo2);
+          console.log(`Escudo escolhido: ${nave.escudo.nome}`);
+          break;
+
+        case 3:
+          const nomeEscudo3: Escudo = escudoC;
+          nave.setEscudo(nomeEscudo3);
+          console.log(`Escudo escolhido: ${nave.escudo.nome}`);
+          break;
+
+        default:
+          console.log('Opção inválida. Tente novamente.');
+          break; 
+
+        //------------------------------------------------------
+      console.log('Voltando ao menu principal');
       break;
+    default:
+      console.log('Opção inválida. Tente novamente.');
+      break;
+
     case 2:
       console.log('| ======= INICIAR JOGO ====== |');
       console.log('|     1.     Combater         |');
       console.log('|     2.      Voltar          |');
       console.log('| =========================== |');
+      break;
 
       const opcaoJogo: number = +teclado('Escolha uma opção: ');
 
@@ -212,14 +220,11 @@ while (continua) {
           console.log('Opção inválida. Tente novamente.');
           break;
       }
-
+      
       break;
     case 3:
       console.log('Você escolheu sair');
       continua = false;
-      break;
-    default:
-      console.log('Opção inválida. Tente novamente.');
       break;
   }
 }

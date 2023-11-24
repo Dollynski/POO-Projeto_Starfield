@@ -5,6 +5,9 @@ import Prompt from 'prompt-sync';
 const teclado = Prompt();
 
 export class Nave {
+  setEscudo(nomeEscudo: Escudo) {
+    throw new Error("Method not implemented.");
+  }
   setNome(nomeNave: string) {
    return this._nome = nomeNave;
   }
