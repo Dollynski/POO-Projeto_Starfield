@@ -57,18 +57,15 @@ while (continua) {
   const opcao: number = +teclado("Escolha uma opção: ");
 
   switch (opcao) {
-    case 0:
-      console.table(nave);
-      break;
     case 1:
       // ESCOLHER O NOME DA NAVE
       const nomeNave: string = teclado("Digite o nome da nave: ");
       console.log("\n");
       console.log("|", "=".repeat(40), "|");
       nave.setNome("Espaçonave " + nomeNave);
+      console.log(`| Nome: ${nave.nome}                  |`);
       console.log("|", "=".repeat(40), "|");
       console.log("\n");
-      console.log(`Nome: ${nave.nome}`);
 
       // ESCOLHER A ARMA
       console.log("-".repeat(30));
