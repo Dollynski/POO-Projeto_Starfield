@@ -6,15 +6,23 @@ const teclado = Prompt();
 
 export class Nave {
   setEscudo(nomeEscudo: Escudo) {
-    throw new Error("Method not implemented.");
+
+    return this._escudo = nomeEscudo;
   }
+
   setNome(nomeNave: string) {
    return this._nome = nomeNave;
   }
+
   setArma(nomeArma: Arma) {
     this._arma = nomeArma;
     return this._arma
   }
+
+  setCombustivel(quantidadeCombustivel: number) {
+    return this._combustivel = quantidadeCombustivel;
+  }
+  
   constructor(
     public _nome: string,
     private _arma: Arma,

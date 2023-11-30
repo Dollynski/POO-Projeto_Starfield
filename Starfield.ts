@@ -1,119 +1,87 @@
 import { Nave } from "./nave";
-import { Arma } from './arma';
-import Prompt from 'prompt-sync';
+import { Arma } from "./arma";
+import Prompt from "prompt-sync";
 import { Escudo } from "./escudo";
+import { Util } from "./util";
 
 const teclado = Prompt();
 
-const dragonMW: Arma = new Arma(
-  'Dragon 221 MW Laser',
-  'Energia',
-  16,
-  1000,
-  50,
-);
+const dragonMW: Arma = new Arma("Dragon 221 MW Laser", "Energia", 16, 1000, 50);
 
+const rezaTHz: Arma = new Arma("RezaTHz", "Energia", 19, 800, 2.5);
 
-const rezaTHz: Arma = new Arma(
-  'RezaTHz',
-  'Energia',
-  19,
-  800,
-  2.5,
-);
-
-
-const ke20Cannon: Arma = new Arma(
-  'KE-20 Cannon',
-  'Balística',
-  22,
-  800,
-  3.49,
-);
-
+const ke20Cannon: Arma = new Arma("KE-20 Cannon", "Balística", 22, 800, 3.49);
 
 const jishaku_fe_railgun: Arma = new Arma(
-  'Jishaku FE Railgun',
-  'Balistica',
+  "Jishaku FE Railgun",
+  "Balistica",
   41,
   1000,
-  2.5,
+  2.5
 );
 
 const vanguard_tempest: Arma = new Arma(
-  'Vanguard Tempest CE-13',
-  'Míssil',
+  "Vanguard Tempest CE-13",
+  "Míssil",
   65,
   4000,
-  1.5,
-)
+  1.5
+);
 
 const infiltrator_sc: Arma = new Arma(
-  'Infiltrator SC-02',
-  'Míssil',
+  "Infiltrator SC-02",
+  "Míssil",
   130,
   3750,
-  1,
-)
-
-const escudoA: Escudo = new Escudo(
-  100,
-  100
+  1
 );
 
-const escudoB: Escudo = new Escudo(
-  50,
-  50
-);
+const escudoA: Escudo = new Escudo("Escudo A", 25, 25);
 
-const escudoC: Escudo = new Escudo(
-  25,
-  25
-);
+const escudoB: Escudo = new Escudo("Escudo B", 50, 50);
 
-const nave: Nave = new Nave(
-  "",
-  infiltrator_sc,
-  100,
-  escudoC
-);
+const escudoC: Escudo = new Escudo("Escudo C", 100, 100);
 
+const nave: Nave = new Nave("", infiltrator_sc, 100, escudoC);
 
 let continua = true;
 
-
 while (continua) {
+  console.log("| ========= MENU ========= |");
+  console.log("|  Bem vindo ao Starfield  |");
+  console.log("|  1.  Construa sua Nave   |");
+  console.log("|  2.    Iniciar jogo      |");
+  console.log("|  3.       Sair           |");
+  console.log("| ======================== |");
 
-  console.log('| ========= MENU ========= |');
-  console.log('|  Bem vindo ao Starfield  |');
-  console.log('|  1.  Construa sua Nave   |');
-  console.log('|  2.    Iniciar jogo      |');
-  console.log('|  3.       Sair           |');
-  console.log('| ======================== |');
-
-  const opcao: number = +teclado('Escolha uma opção: ');
+  const opcao: number = +teclado("Escolha uma opção: ");
 
   switch (opcao) {
     case 0:
-      console.table(nave)
+      console.table(nave);
       break;
     case 1:
-      const nomeNave: string = teclado('Digite o nome da nave: ');
-      nave.setNome(nomeNave);
+      // ESCOLHER O NOME DA NAVE
+      const nomeNave: string = teclado("Digite o nome da nave: ");
+      console.log("\n");
+      console.log("|", "=".repeat(40), "|");
+      nave.setNome("Espaçonave " + nomeNave);
+      console.log("|", "=".repeat(40), "|");
+      console.log("\n");
       console.log(`Nome: ${nave.nome}`);
 
-      //------------------------------------------------------
-      console.log('-'.repeat(30));
-      console.log('Escolha a sua arma');
-      console.log('1. Dragon 221 MW Laser');
-      console.log('2. RezaTHz');
-      console.log('3. KE-20 Cannon');
-      console.log('4. Jishaku FE Railgun');
-      console.log('5. Vanguard Tempest CE-13');
-      console.log('6. Infiltrator SC-02');
-      console.log('7. Voltar');
+      // ESCOLHER A ARMA
+      console.log("-".repeat(30));
+      console.log("Escolha a sua arma");
+      console.log("1. Dragon 221 MW Laser");
+      console.log("2. RezaTHz");
+      console.log("3. KE-20 Cannon");
+      console.log("4. Jishaku FE Railgun");
+      console.log("5. Vanguard Tempest CE-13");
+      console.log("6. Infiltrator SC-02");
+      console.log("7. Voltar");
 
-      const opcaoArma: number = parseInt(teclado('Digite a opção desejada: '));
+      const opcaoArma: number = parseInt(teclado("Digite a opção desejada: "));
 
       switch (opcaoArma) {
         case 1:
@@ -153,23 +121,27 @@ while (continua) {
 
           break;
         case 7:
-          console.log('Voltando');
+          console.log("Voltando");
           break;
         default:
-          console.log('Opção inválida. Tente novamente.');
+          console.log("Opção inválida. Tente novamente.");
           break;
       }
-            //------------------------------------------------------
-      console.log('-'.repeat(30));
-      console.log('Escolha um escudo');
-      console.log('1. Escudo A');
-      console.log('2. Escudo B');
-      console.log('3. Escudo C');
 
-      const opcaoEscudo: number = parseInt(teclado('Digite a opção desejada: '));
+      // ESCOLHER O ESCUDO
+
+      console.log("-".repeat(30));
+      console.log("Escolha um escudo");
+      console.log("1. Escudo A");
+      console.log("2. Escudo B");
+      console.log("3. Escudo C");
+
+      const opcaoEscudo: number = parseInt(
+        teclado("Digite a opção desejada: ")
+      );
 
       switch (opcaoEscudo) {
-        case 1: 
+        case 1:
           const nomeEscudo: Escudo = escudoA;
           nave.setEscudo(nomeEscudo);
           console.log(`Escudo escolhido: ${nave.escudo.nome}`);
@@ -188,43 +160,78 @@ while (continua) {
           break;
 
         default:
-          console.log('Opção inválida. Tente novamente.');
-          break; 
+          console.log("Opção inválida. Tente novamente.");
+          break;
+      }
 
-        //------------------------------------------------------
-      console.log('Voltando ao menu principal');
-      break;
-    default:
-      console.log('Opção inválida. Tente novamente.');
+      // RANDOMIZAÇÃO DO COMBUSTÍVEL
+
+      nave.setCombustivel(Util.randomizar(100, 500));
+
       break;
 
     case 2:
-      console.log('| ======= INICIAR JOGO ====== |');
-      console.log('|     1.     Combater         |');
-      console.log('|     2.      Voltar          |');
-      console.log('| =========================== |');
-      break;
+      if (nave.nome != "") {
+        console.log("| ======= INICIAR JOGO ====== |");
+        console.log("|     1.     Combater         |");
+        console.log("|     2.   Ver sua Nave       |");
+        console.log("|     3.      Voltar          |");
+        console.log("| =========================== |");
+        const opcaoJogo: number = +teclado("Escolha uma opção: ");
 
-      const opcaoJogo: number = +teclado('Escolha uma opção: ');
+        switch (opcaoJogo) {
+          case 1:
+            console.log("Você escolheu combater");
 
-      switch (opcaoJogo) {
-        case 1:
-          console.log('Você escolheu combater');
-          // Aqui você pode adicionar o código para permitir que o usuário escolha um destino
-          break;
-        case 2:
-          console.log('Voltando ao menu principal');
-          // Aqui você pode adicionar o código para iniciar a exploração
-          break;
-        default:
-          console.log('Opção inválida. Tente novamente.');
-          break;
+            const armas: Arma[] = [
+              dragonMW,
+              rezaTHz,
+              ke20Cannon,
+              jishaku_fe_railgun,
+              vanguard_tempest,
+              infiltrator_sc,
+            ];
+
+            const escudos: Escudo[] = [escudoA, escudoB, escudoC];
+            
+            const inimigo: Nave = new Nave(
+              "Inimigo",
+              armas[Util.randomizar(0, 5)],
+              Util.randomizar(100, 500),
+              escudos[Util.randomizar(0, 2)]
+            );
+
+
+            
+            break;
+
+          case 2:
+            console.log("Você escolheu ver sua nave");
+            // Aqui você pode adicionar o código para iniciar a exploração
+            break;
+            
+          default:
+            console.log("Opção inválida. Tente novamente.");
+            break;
+        }
+        break;
+      } else {
+        console.log("\n");
+        console.log("|", "=".repeat(40), "|");
+        console.log("| Você precisa construir uma nave primeiro |");
+        console.log("|", "=".repeat(40), "|");
+        console.log("\n");
+
+        break;
       }
-      
-      break;
+
     case 3:
-      console.log('Você escolheu sair');
+      console.log("Voltando ao Menu Principal");
       continua = false;
+      break;
+
+    default:
+      console.log("Opção inválida. Por favor, escolha novamente.");
       break;
   }
 }
@@ -338,10 +345,6 @@ switch (opcao) {
   
       break;
   */
-
-
-
-
 
 /* auxilio dos casos
 Claro, posso ajudar com isso. No entanto, para fornecer uma solução precisa, preciso de mais detalhes sobre o que exatamente deve acontecer quando o usuário escolhe uma nave de carga, combate ou exploração. Por exemplo, isso afeta as propriedades da nave? Se sim, quais propriedades são afetadas e como?
