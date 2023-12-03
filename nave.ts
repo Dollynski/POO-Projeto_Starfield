@@ -25,9 +25,9 @@ export class Nave {
   
   constructor(
     public _nome: string,
-    private _arma: Arma,
-    private _combustivel: number,
-    private _escudo: Escudo,
+    public _arma: Arma,
+    public _combustivel: number,
+    public _escudo: Escudo
   ) {}
 
   public set nome(value: string) {
